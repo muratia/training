@@ -22,36 +22,22 @@ public class CvsProcessor {
         FileUtils fu = new FileUtils ();
         List<String> linesStr = fu.getStrings (fileName);
         logger.info (Arrays.deepToString (linesStr.toArray ()));
-        String line;
-        for (String s : linesStr) {
-            line = s;
 
+        for (String line : linesStr) {
             String[] values = line.split (COMMA_DELIMITER);
-
-            logger.info ("Values: " + Arrays.deepToString (values));
-
-
             Person p = new Person ();
-
             if (values.length == 4) {
-
                 p.setId (0L);
                 p.setName (values[0].trim ());
                 p.setLastName (values[1].trim ());
-
                 String zip = values[2].replaceAll ("[^0-9]", "");
                 String city = values[2].replaceAll ("[\\d-]", "").trim ();
-
                 p.setZipCode (zip);
                 p.setCity (city);
-
                 p.setColor (Integer.parseInt (values[3]));
-
             }
             persons.add (p);
         }
         return persons;
     }
-
-
 }
