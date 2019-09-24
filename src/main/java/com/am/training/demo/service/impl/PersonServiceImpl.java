@@ -80,7 +80,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> save(List<Person> persons) throws EmptyListException {
-        logger.error ("List of Persons: "+ persons);
+        logger.error ("List of Persons: " + persons);
         if (persons.isEmpty ()) throw new EmptyListException ("The list is empty");
         return this.repository.saveAll (persons);
     }
